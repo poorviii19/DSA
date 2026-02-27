@@ -39,7 +39,6 @@ int main(){
     getline(cin,s);
     cout<<s<<endl;
 
-
     // char: stores charcters:
     char ch;
     cin>>ch;
