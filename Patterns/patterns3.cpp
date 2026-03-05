@@ -71,6 +71,56 @@ void alphabetTriangle(int num){
         }
         cout<<endl;
     }
+
+
+
+//pattern6
+
+for(int i=0;i<num;i++){
+    for(char ch = 'E'-i;ch<='E';ch++){
+        cout<<ch;
+    }
+    cout<<endl;
+}
+
+}
+
+
+void starPattern(int num){
+
+
+
+    /*
+    ****
+    *  *
+    *  *
+    ****
+    
+    */
+    for(int i =0;i<num;i++){
+
+        if(i==0 || i == num-1){
+
+            for(int j=0;j<num;j++){
+
+
+                cout<<"*";
+            }
+            cout<<endl;
+        }
+        else{
+            for(int j =0;j<num;j++){
+                if(j==0 || j==num-1){
+                    cout<<"*";
+                }
+                else{
+                    cout<<" ";
+                }
+            }
+            cout<<endl;
+        }
+        }
+    
 }
 
 int main(){
@@ -78,6 +128,8 @@ int main(){
     cin>> num;
 
     alphabetTriangle(num);
+    cout<<endl;
+    starPattern(num);
 
     return 0;
 }
