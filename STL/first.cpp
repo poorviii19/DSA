@@ -5,7 +5,18 @@ using namespace std;
 
 void explainPair(){   
 
-    // pairs
+    // pairs   In C++, a pair is a simple container that stores two values 
+    // together as a single unit. These two values can be of different data types.
+    //  It is provided in the Standard Template Library (STL) and defined in the header:  #include<utility>
+
+
+    // first value is called first and the second value is called second.  pair<data_type1, data_type2> variable_name;
+
+    //initialisation:
+    // pair<int, int> p(10, 20);
+    // pair<int, int> p = make_pair(10, 20);
+    // Pairs can be compared automatically.
+
     pair<int,int>p = {1,3};
     cout<<p.first<<" "<<p.second<<endl;
 
