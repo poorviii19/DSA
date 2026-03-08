@@ -1,6 +1,6 @@
 /.vscode
 basics.exe
-.gitignore
+gitignore
 conditionals.exe
 switchcase.exe
 array.exe
@@ -15,6 +15,9 @@ patterns2.exe
 patterns3.exe
 first.exe
 second.exe
+Third.exe
+Fourth.exe
+
 
 
 
