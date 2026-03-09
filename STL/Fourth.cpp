@@ -1,5 +1,6 @@
 #include<iostream>
 #include<set>
+#include<unordered_set>
 
 using namespace std;
 
@@ -51,8 +52,46 @@ void explainSet(){
 
     // everything in set happens in O(log n) T.C.
 
-    
 
+}
+
+void explainMultipleSet(){
+
+    //Everything is same as set
+    //only stores duplicate elements also
+
+    multiset<int> ms;
+    ms.insert(1); //{1}
+    ms.insert(1); //{1,1}
+    ms.insert(1); //{1,1,1}
+    ms.insert(2); //{1,1,1,2}
+    ms.insert(2); //{1,1,1,2,2}
+
+    // ms.erase(1);  //all 1's erased
+
+    int cnt = ms.count(1);
+
+
+    //only a single one erased
+    ms.erase(ms.find(1));
+
+    ms.erase(ms.find(1), next(ms.find(1), 2));   //erases two 1's
+
+    for(auto x : ms)
+        cout << x << " ";
+
+    //rest all functions are same as set
+
+}
+
+void explainUnorderedSet(){
+    unordered_set<int> st;
+
+// lower_bound and upper_bound function
+// does not works, rest all functions are same
+// as above, it does not stores in any
+// particular order  but only stores unique elementsit has a better complexity (O(1)) and exceptionally (O(n))
+// than set in most cases, except some when collision happens
 
 
 }
@@ -60,6 +99,9 @@ void explainSet(){
 int main(){
     explainSet();
     cout<<endl;
+    explainMultipleSet();
+    explainUnorderedSet();
+
 
 
     return 0;
