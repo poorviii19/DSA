@@ -1,0 +1,24 @@
+class Solution {
+public:
+
+    bool reverseNum(int x){
+        long rev = 0;
+        int num = x;
+        if(x<0){
+            return false;
+        }
+        while(x>0){
+            int lastdig = x%10;
+            rev = (rev*10)+lastdig;
+            if(rev>INT_MAX || rev<INT_MIN){
+                return 0;
+            }
+            x = x/10;
+        }
+        return (rev == num);
+
+    }
+    bool isPalindrome(int x) {
+        return reverseNum(x);       
+    }
+};
