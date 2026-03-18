@@ -2,12 +2,15 @@
 using namespace std;
 
 
+// function calling itself untial a specified condition is met is called recursion
+// things to take care about: 1)Base Case(termination Condition)  2)Recursive function   3) stack overflows 
+
 int summation(int n){
-    if(n==0){
+    if(n==0){  //base case
         return 0;
     }
 
-    return n +summation(n-1);
+    return n +summation(n-1);   //recursive function
 
 
 }
