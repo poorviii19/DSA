@@ -4,7 +4,7 @@ using namespace std;
 class heap{
     public:
 
-    void heapifyMax(int arr[], int n, int i){
+    void heapify(int arr[], int n, int i){
 
     int largest = i;
     int left = 2 * i;
@@ -20,31 +20,24 @@ class heap{
 
     if(largest != i){
         swap(arr[largest], arr[i]);
-        heapifyMax(arr, n, largest);
+        heapify(arr, n, largest);
     }
 }
 
+    void heapSort(int arr[], int n){
+        int size = n;
+        while(size > 1){
+            // Step 1: swap root with last element
+            swap(arr[1], arr[size]);
 
-    void heapifyMin(int arr[], int n, int i){
+            // Step 2: reduce heap size
+            size--;
 
-    int smallest = i;
-    int left = 2 * i;
-    int right = 2 * i + 1;
+            // Step 3: heapify root
+            heapify(arr, size, 1);
+        }
 
-    if(left <= n && arr[smallest] > arr[left]){
-        smallest = left;
     }
-
-    if(right <= n && arr[smallest] > arr[right]){
-        smallest = right;
-    }
-
-    if(smallest != i){
-        swap(arr[smallest], arr[i]);
-        heapifyMin(arr, n, smallest);
-    }
-}
-
 
 
 };
@@ -55,23 +48,18 @@ int main(){
     int arr[8] = {-1, 54, 53, 55, 52, 50};
     int n = 5;
     for(int i = n/2; i >= 1; i--){
-        h.heapifyMax(arr, n, i);
+        h.heapify(arr, n, i);
     }
     
     cout<<"printing the array after heapify"<<endl;
     for(int i =1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
-    cout<<endl;
-    for(int i = n/2; i >= 1; i--){
-        h.heapifyMin(arr, n, i);
-    }
-    cout<<"printing the array after heapify"<<endl;
+    
+    h.heapSort(arr,n);
+    cout<<"printing the array after heap sort"<<endl;
     for(int i =1;i<=n;i++){
         cout<<arr[i]<<" ";
     }
-    cout<<endl;
-
-
     return 0;
 }
