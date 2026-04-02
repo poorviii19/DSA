@@ -33,7 +33,7 @@ class heap{
         }cout<<endl;
     }
 
-    void deleteFromHeap(){
+    void deleteFromMaxHeap(){
         if(size==0){
             cout<<"Can't delete! heap is empty.";
             return;
@@ -80,7 +80,7 @@ int main(){
     h.insertMaxheap(73);
     h.insertMaxheap(84);
     h.print();
-    h.deleteFromHeap();
+    h.deleteFromMaxHeap();
     cout<<endl;
     h.print();
 
