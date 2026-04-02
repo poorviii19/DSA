@@ -1,26 +1,5 @@
 /.vscode
-basics.exe
-gitignore
-conditionals.exe
-switchcase.exe
-array.exe
-functions.exe
-insertion_Sorting.exe
-largestinarray.exe
-Loops.exe
-rotatearray.exe
-slidingwindow1.exe
-patterns.exe
-patterns2.exe
-patterns3.exe
-first.exe
-second.exe
-Third.exe
-Fourth.exe
-Fifth.cpp
-Math1.exe
-recursion1.exe
-recursion2.exe
+.gitignore
 *.exe
 
 
