@@ -33,41 +33,44 @@ class heap{
         }cout<<endl;
     }
 
-    void deleteFromMaxHeap(){
-        if(size==0){
-            cout<<"Can't delete! heap is empty.";
-            return;
-        }
-
-        // step: 1 put last element to first index
-        arr[1] = arr[size];
-        //step2: remove last element
-        size--;
-
-
-        //step3:  Maintining heap property:
-        int i = 1;
-        while(i<=size){
-            int left = 2*i;
-            int right = 2*i+1;
-            int largest = i;
-
-            if(left<size && arr[i]<arr[left]){
-                swap(arr[i], arr[left]);
-                largest = left;
-            }
-            else if(right<size && arr[i]<arr[right]){
-                 if(largest != i){
-                swap(arr[i], arr[largest]);
-                i = largest;
-            }
-            else{
-                break;
-            }
-        }
-        cout<<"heap root node deleted successfully";
-
+    void deleteFromMaxHeap() {
+    if (size == 0) {
+        cout << "Can't delete! Heap is empty.\n";
+        return;
     }
+
+    // Step 1: Replace root with last element
+    arr[1] = arr[size];
+
+    // Step 2: Remove last element
+    size--;
+
+    // Step 3: Heapify Down
+    int i = 1;
+
+    while (i <= size) {
+        int left = 2 * i;
+        int right = 2 * i + 1;
+        int largest = i;
+
+        if (left <= size && arr[left] > arr[largest]) {
+            largest = left;
+        }
+
+        if (right <= size && arr[right] > arr[largest]) {
+            largest = right;
+        }
+
+        // If parent is already largest → stop
+        if (largest == i) {
+            break;
+        }
+
+        swap(arr[i], arr[largest]);
+        i = largest;
+    }
+
+    cout << "Heap root node deleted successfully\n";
 }
 };
 
