@@ -14,6 +14,10 @@ class Node{
         this->next = NULL;
     }
 
+    ~Node() {
+        cout << "Memory free for node with data " << data << endl;
+    }
+
 
 };
 
@@ -28,20 +32,6 @@ void print(Node* head){
 
     }
     cout<<endl;
-}
-
-
-//length
-int getLength(Node* head){
-    int len = 0;
-     Node* temp = head;
-
-    while(temp != NULL){
-        len++;
-        temp = temp->next;
-
-    }
-    return len;
 }
 
 void insertAtHead(Node* &head, Node* &tail,  int data){
@@ -104,22 +94,61 @@ void insertAtHead(Node* &head, Node* &tail,  int data){
 
  }
 
+
+ void deleteNode(Node* &head, Node* &tail, int pos){
+    if(head == NULL) return;
+
+    //deleting starting node
+   if(pos == 1){
+        Node* temp = head;
+
+        if(head->next != NULL){
+            head = head->next;
+            head->prev = NULL;
+        } else {
+            head = tail = NULL;
+        }
+
+        temp->next = NULL;
+        delete temp;
+        return;
+    }
+
+
+    Node* curr = head;
+    int count = 1;
+
+    while(count < pos && curr != NULL){
+        curr = curr->next;
+        count++;
+    }
+
+    if(curr == NULL) return; // invalid position
+
+    // last node
+    if(curr->next == NULL){
+        tail = curr->prev;
+        tail->next = NULL;
+    }
+    else{
+        curr->prev->next = curr->next;
+        curr->next->prev = curr->prev;
+    }
+
+    curr->next = NULL;
+    curr->prev = NULL;
+    delete curr;
+  
+ }
+
 int main(){
-
-    // Node* node1 = new Node(10);
-    // Node* head = node1;
-    // Node* tail = node1;
-
-    //or
-    
     Node* head = NULL;
     Node* tail = NULL;
 
 
     
     print(head);
-    cout<<getLength(head)<<endl;
-    
+
     insertAtHead(head, tail, 11);
     print(head);
     cout<<"head: "<<head->data<<endl;
@@ -151,6 +180,20 @@ int main(){
     cout<<"tail: "<<tail->data<<endl;
 
     insertAtPosition(tail, head, 7, 300);
+    print(head);
+    cout<<"head: "<<head->data<<endl;
+    cout<<"tail: "<<tail->data<<endl;
+    
+    
+    deleteNode(head, tail,  5);
+    print(head);
+    cout<<"head: "<<head->data<<endl;
+    cout<<"tail: "<<tail->data<<endl;
+    deleteNode(head, tail, 1);
+    print(head);
+    cout<<"head: "<<head->data<<endl;
+    cout<<"tail: "<<tail->data<<endl;
+    deleteNode(head, tail,  5);
     print(head);
     cout<<"head: "<<head->data<<endl;
     cout<<"tail: "<<tail->data<<endl;
