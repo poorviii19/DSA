@@ -1,3 +1,6 @@
+//practice of basic concepts of singly linked list
+
+
 #include<iostream>
 using namespace std;
 
@@ -41,7 +44,39 @@ void insertAtTail(Node* &head, Node* &tail, int value){
     
 }
 
-void print(Node* &head){
+void insertAtPosition(Node* &head, Node* &tail, int pos, int value){
+    if(pos == 1){
+       
+        insertAtHead(head, tail, value);
+        return;
+    }
+
+    Node* temp = head;
+    int cnt = 1;
+
+    // Move to (pos-1) node
+    while(cnt<pos-1 && temp != NULL){
+        temp = temp->next;
+        cnt++;
+    }
+
+    if(temp == NULL){
+        cout<<"position out of range"<<endl;
+        return;
+    }
+
+    if(temp->next == NULL){
+        insertAtTail(head, tail, value);
+        return;
+
+    }
+    Node* newNode = new Node(value);
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
+
+void print(Node* head){
     Node* temp = head;
     while(temp != NULL){
         cout<<temp->data<<"->";
@@ -81,16 +116,27 @@ int main(){
         // If that assumption doesn’t hold, I would switch to size-based input or another termination mechanism.”
 
 
-// A sentinel value is a predefined value that is not part of normal data, used to terminate a loop or process.
+        // A sentinel value is a predefined value that is not part of normal data, used to terminate a loop or process.
 
-int val;
-cout<<"insert teh value you want to insert at tail: "<<endl;
+    int val;
+    cout<<"insert to value you want to insert at tail: "<<endl;
 
-for(int i =0;i<n;i++){
-    cin>>val;
-    insertAtTail(head, tail, val);
-}
-print(head);
+    for(int i =0;i<n;i++){
+        cin>>val;
+        insertAtTail(head, tail, val);
+    }
+    print(head);
+
+
+
+    int position, data;
+    cout << "Enter position and value:\n";
+    cin >> position >> data;
+
+    insertAtPosition(head, tail, position, data);
+
+    print(head);
+
 
 
     return 0;
