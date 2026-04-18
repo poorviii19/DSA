@@ -76,6 +76,8 @@ void insertAtPosition(Node* &head, Node* &tail, int pos, int value){
 }
 
 
+
+
 void print(Node* head){
     Node* temp = head;
     while(temp != NULL){
@@ -85,6 +87,53 @@ void print(Node* head){
     cout<<"NULL"<<endl;
 }
 
+
+void deleteNode(int pos, Node* &head, Node* &tail){
+//edge case
+    if(head==NULL){
+        cout<<"empty list\n";
+        return;
+    }
+    if(pos==1){
+        Node* temp = head;
+        head =  head->next;
+        temp->next = NULL;  //important to avoid dangling pointer
+
+        if(head == NULL){
+            tail = NULL;  //if list becomes empty, update tail as well
+        }
+
+        delete temp;
+        return;
+    }
+
+
+        // Traverse to position
+    Node* curr = head;
+    Node* prev = NULL;
+    int count = 1;
+    while(count<pos && curr != NULL){
+        prev = curr;
+        curr= curr->next;
+        count++;
+    }
+
+    //edge case
+    if(curr ==NULL){
+        cout<<"Position out of range\n";
+        return;
+    }
+
+    if(curr->next == NULL){
+        tail = prev;
+        prev->next = NULL;
+        delete curr;
+        return;
+    }
+
+     prev->next = curr->next;
+     delete curr;
+}
 
 int main(){
 
@@ -135,6 +184,9 @@ int main(){
 
     insertAtPosition(head, tail, position, data);
 
+    print(head);
+    
+    deleteNode(position, head, tail);
     print(head);
 
 
