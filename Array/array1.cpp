@@ -31,6 +31,24 @@ int main(){
 
 
 
+    // Static vs Dynamic Arrays:
+    //Static Array(fixed size, lives on the stack):
+
+    int array1[100]; // size fixed at compile time
+                    // fast, but can't resize
+    
+    //Dynamic Array(heap-allocated, flexible size):
+    int n = 10;
+    int* arr= new int[n]; //allocate on heap at runtime
+
+    //assigning values to array:
+    arr[0] = 5;         //use just like a normal array
+    arr[1] = 10;
+
+    delete[] arr;       //MUST free memory manually!
+    arr = nullptr;      //good practice after deleteion
+
+
 
     return 0;
 }
