@@ -1,0 +1,23 @@
+class Solution {
+public:
+    bool isPowerOfTwo(int n) {
+        int i=0;
+        int s=n/2;
+        if(n==1 || n==2 || n==4) return true;
+        long long int pow = 2;
+        for(int i=1;i<s;i++){
+            if(pow== n){
+                return true;
+            }
+            else if(pow < n){
+                pow=pow*2;
+            }
+            else if(pow > n ){
+                break;
+            }
+        
+        }
+        return false;
+        
+    }
+};
