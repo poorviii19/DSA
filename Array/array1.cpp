@@ -38,16 +38,17 @@ int main(){
                     // fast, but can't resize
     
     //Dynamic Array(heap-allocated, flexible size):
-    int n = 10;
-    int* arr= new int[n]; //allocate on heap at runtime
+    int m = 10;
+    int* arr= new int[m]; //allocate on heap at runtime
 
     //assigning values to array:
     arr[0] = 5;         //use just like a normal array
     arr[1] = 10;
 
-    delete[] arr;       //MUST free memory manually!
+    cout<<arr[0]<<endl;
+    delete[] arr;       //MUST free memory manually otherwise memory    leak risk!
     arr = nullptr;      //good practice after deleteion
-
+    cout<<arr[0]<<endl; //will not return anything becuase This array cannot be read or written after destroying.
 
 
     return 0;
