@@ -4,6 +4,11 @@ using namespace std;
 
 int main(){
 
+// Fixed Window Example
+// Problem:
+
+// Find max sum of subarray of size k
+
     int arr[] = {2,1,5,1,3,2};
     int n = sizeof(arr)/sizeof(arr[0]);
     int k = 2;
