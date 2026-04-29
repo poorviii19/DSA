@@ -1,6 +1,9 @@
 #include<iostream>
 using namespace std;
 
+
+//square matrix transpose
+
 void transposeMatrix(int matrix[][100], int n){  //giving the size of column is must
 
 //     In C++, when passing a 2D array, you must specify the column size.
