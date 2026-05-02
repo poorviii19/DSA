@@ -1,4 +1,5 @@
 #include<iostream>
+#include<math.h>
 using namespace std;
 
 int main(){
@@ -50,6 +51,6 @@ int main(){
     arr = nullptr;      //good practice after deleteion
     cout<<arr[0]<<endl; //will not return anything becuase This array cannot be read or written after destroying.
 
-
+    
     return 0;
 }
