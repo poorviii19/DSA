@@ -31,4 +31,4 @@ int binarysearch(vector<int> &nums, int target){
     
 
 
-};
+}; 
