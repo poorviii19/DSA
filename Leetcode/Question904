@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int totalFruit(vector<int>& fruits) {
+        vector<int> freq(100001, 0);
+        int left = 0;
+        int diff = 0;  //different types of fruits
+        int maxi = 0;
+
+        for(int r =0;r<fruits.size();r++){
+            if(freq[fruits[r]]==0){
+                diff++;
+            }
+            freq[fruits[r]]++;
+
+            while(diff>2){
+                freq[fruits[left]]--;
+                if(freq[fruits[left]]==0){
+                    diff--;
+                }
+                left++;
+            }
+            maxi = max(maxi, r - left + 1);
+        }
+
+
+    return maxi;
+
+    }
+};
