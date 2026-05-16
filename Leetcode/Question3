@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int frequency[128] = {0};
+        int maxLen = 0;
+        int l =0;
+        for(int r =0; s[r]!= '\0' ;r++){
+             while(frequency[s[r]] == 1) {
+
+                frequency[s[l]] = 0;
+                l++;
+            }
+              frequency[s[r]] = 1;
+            maxLen = max(maxLen, r - l + 1);
+        }
+
+        return maxLen;
+    }
+};
