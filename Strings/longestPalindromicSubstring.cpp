@@ -4,6 +4,9 @@
 
 using namespace std;
 
+
+// Expand around center approach: O(n^2) time, O(1) space
+
 // Helper: expand from center, return [left, right] indices
 pair<int,int> expand(char s[], int l, int r, int n) {
 
@@ -52,6 +55,10 @@ string longestPalindrome(char s[], int n) {
     return result;
 }
 
+
+
+// Manacher's algorithm: O(n) time, O(n) spac
+
 int main() {
 
     char s[] = "babad";
@@ -64,3 +71,5 @@ int main() {
 
     return 0;
 }
+
+
