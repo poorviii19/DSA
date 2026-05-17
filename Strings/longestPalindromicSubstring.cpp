@@ -56,9 +56,6 @@ string longestPalindrome(char s[], int n) {
 }
 
 
-
-// Manacher's algorithm: O(n) time, O(n) spac
-
 int main() {
 
     char s[] = "babad";
