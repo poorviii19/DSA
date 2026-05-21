@@ -25,7 +25,21 @@ void iterativeDFS(int start,
 
         cout << curr << "->";
 
-        for(int neigh : graph[curr]) {
+        // for(int neigh : graph[curr]) {
+
+        //     if(!visited[neigh]) {
+
+        //         st.push(neigh);
+
+        //         visited[neigh] = true;
+        //     }
+        // }
+
+        // to match the recursive dfs order, we need to push neighbors in reverse order
+
+        for(int i = graph[curr].size() - 1; i >= 0; i--) {
+
+            int neigh = graph[curr][i];
 
             if(!visited[neigh]) {
 
