@@ -1,7 +1,8 @@
 //  Eulerian path and circuit, Eulerian path for an undirected graph, Eulerian circuit 
 // for an undirected graph
 
-
+// euler path: a path that uses every edge exactly once
+// euler circuit: a circuit that uses every edge exactly once
 #include <iostream>
 #include <vector>
 
