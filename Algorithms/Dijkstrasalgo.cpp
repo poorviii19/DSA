@@ -64,3 +64,13 @@ int main() {
         cout << dist[i] << " ";
     }
 }
+
+// Dijkstra's only works with positive weights because:
+// SUPER IMPORTANT
+
+// With negative edges:
+
+// nodes may keep improving later
+// earlier decisions become unreliable
+
+// This turns the algorithm into something unstable.
