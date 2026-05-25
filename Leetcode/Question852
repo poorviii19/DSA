@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int n =arr.size();
+        int s = 0;
+        int e = n-1;
+        int m = s+(e-s)/2;
+
+        while(s<e){ 
+            if(arr[m]<arr[m+1]){
+                // A wali line me hu
+                // peak right me exist kregi
+                s=m+1;
+            }
+            else{
+                // yha B pe ya Peak pe
+                e=m;
+            }
+            // mid update
+            m=s+(e-s)/2;
+        }
+        return s;
+    }
+};
