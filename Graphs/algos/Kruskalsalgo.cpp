@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Comparator
+
 bool cmp(vector<int>& a, vector<int>& b) {
     return a[2] < b[2];
 }
 
-// Make Set
+
 void makeSet(vector<int>& parent, vector<int>& rank, int n) {
     for(int i = 0; i < n; i++) {
         parent[i] = i;
@@ -14,14 +14,14 @@ void makeSet(vector<int>& parent, vector<int>& rank, int n) {
     }
 }
 
-// Find Parent (Path Compression)
+
 int findParent(vector<int>& parent, int node) {
     if(parent[node] == node)
         return node;
     return parent[node] = findParent(parent, parent[node]);
 }
 
-// Union by Rank
+
 void unionSet(int u, int v, vector<int>& parent, vector<int>& rank) {
     u = findParent(parent, u);
     v = findParent(parent, v);
@@ -38,7 +38,6 @@ void unionSet(int u, int v, vector<int>& parent, vector<int>& rank) {
     }
 }
 
-// Kruskal MST
 int minimumSpanningTree(vector<vector<int>>& edges, int n) {
     sort(edges.begin(), edges.end(), cmp);
 
@@ -61,7 +60,7 @@ int minimumSpanningTree(vector<vector<int>>& edges, int n) {
     return minWeight;
 }
 
-// MAIN FUNCTION
+
 int main() {
 
     int n, e;
