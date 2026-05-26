@@ -1,0 +1,52 @@
+class Solution {
+public:
+
+    bool dfs(int node, vector<int> adj[], vector<int> &visited, vector<int> &pvisited){
+        visited[node] = 1;
+        pvisited[node] =1;
+
+        for(auto neighbour : adj[node]){
+            if(!visited[neighbour]){
+                if(
+                dfs(neighbour, adj, visited, pvisited)){
+                    return true;
+                }
+            }
+            else if(pvisited[neighbour]){
+                return true;
+            }
+        }
+        pvisited[node] =0;
+    return false;
+    }
+
+    bool isCycle(int numCourses, vector<vector<int>> &prerequisites){
+
+        vector<int> adj[numCourses];
+
+        // build graph
+        for(auto it : prerequisites) {
+
+            int course = it[0];
+            int prereq = it[1];
+
+            adj[prereq].push_back(course);
+        }
+
+        int n = numCourses;
+        vector<int> visited(n,0);
+        vector<int> pvisited(n,0);
+        for(int i =0;i<n;i++){
+            if(!visited[i]){
+                if(dfs(i,adj, visited, pvisited)){
+                    return true;
+                }
+            }
+        }
+        return false;
+
+    }
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+        return !isCycle(numCourses, prerequisites);
+    }
+};
