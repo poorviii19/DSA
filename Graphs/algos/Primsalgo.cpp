@@ -48,7 +48,7 @@ int main(){
         }
 
         visited[node] = 1;
-        mstCount += 1;
+        mstCount += wt;
 
         for(auto edge : graph[node]){
             int adjNode = edge.first;
