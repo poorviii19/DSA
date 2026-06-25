@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> temp(n);
+        int leftptr =0;
+        int rightptr = n-1;
+        int index = n-1;
+
+        while(leftptr<=rightptr){
+            if(abs(nums[leftptr]) > abs(nums[rightptr])){
+                temp[index] = nums[leftptr]*nums[leftptr];
+                leftptr++;
+            }
+            else{
+                temp[index] = nums[rightptr]*nums[rightptr];
+                rightptr--;
+            }
+            index--;
+        }
+
+        return temp;
+    }
+};
