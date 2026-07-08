@@ -1,0 +1,91 @@
+
+
+// brute force: space complexity O(m+n) 
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int n = matrix.size();
+        int m = matrix[0].size();
+
+        vector<vector<int>> temp = matrix;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+
+                if (matrix[i][j] == 0) {
+
+                    // entire row
+                    for (int k = 0; k < m; k++)
+                        temp[i][k] = 0;
+
+                    // entire column
+                    for (int k = 0; k < n; k++)
+                        temp[k][j] = 0;
+                }
+            }
+        }
+
+        matrix = temp;
+    }
+};
+
+
+
+
+
+
+
+// optimal approach: space complexity: O(1)
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+       bool firstR = false;
+       bool firstC = false;
+
+       int m = matrix[0].size();
+       int n = matrix.size();
+
+       for(int i =0 ;i<m;i++){
+        if(matrix[0][i] == 0){
+            firstR = true;
+            break;
+        }
+       }
+       for(int i =0 ;i<n;i++){
+        if(matrix[i][0] == 0){
+            firstC = true;
+            break;
+        }
+       }
+
+       for(int i =1;i<n;i++){
+        for(int j = 1;j<m;j++){
+            if(matrix[i][j]==0){
+                matrix[i][0] = 0;
+                matrix[0][j] = 0;
+            }
+        }
+       }
+
+       for(int i =1;i<n;i++){
+        for(int j =1;j<m;j++){
+            if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                matrix[i][j] =0;
+            }
+        }
+       }
+
+       if(firstR){
+        for(int i =0;i<m;i++){
+            matrix[0][i] = 0;
+        }
+       }
+       if(firstC){
+        for(int i =0;i<n;i++){
+            matrix[i][0] = 0;
+        }
+       }
+
+       
+    }
+};
