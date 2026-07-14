@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isBalanced(string num) {
+        int evensum = 0;
+        int oddsum = 0;
+        for(int k =0;k<num.size();k+=2){
+            evensum+= num[k] - '0';
+        }
+        for(int k =1;k<num.size();k+=2){
+            oddsum+= num[k] - '0';
+        }
+        if(evensum == oddsum){
+            return true;
+        }
+        return false;
+    }
+};
