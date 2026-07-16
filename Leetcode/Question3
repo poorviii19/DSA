@@ -1,3 +1,5 @@
+// using sliding window
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
@@ -12,6 +14,26 @@ public:
             }
               frequency[s[r]] = 1;
             maxLen = max(maxLen, r - l + 1);
+        }
+
+        return maxLen;
+    }
+};
+
+
+// using substrings concept
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        string substr = "";
+        int maxLen = 0;
+        for(int i  =0;i<s.size();i++){
+            int pos = substr.find(s[i]);
+            if(pos != string::npos){
+                substr = substr.substr(pos+1);
+            }
+            substr+=s[i];
+            maxLen = max(maxLen, (int)substr.size());
         }
 
         return maxLen;
