@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int maxProduct(int n) {
+        int prod = 0;
+        int maxProd = 0;
+
+        vector<int> digits;
+        while(n>0){
+            int digit = n%10;
+            digits.push_back(digit);
+            n/=10;
+        }
+
+        for(int i =0;i<digits.size();i++){
+            for(int j =0;j<digits.size();j++){
+                if(i == j){
+                    continue;
+                }
+                prod = digits[i]*digits[j];
+                maxProd = max(maxProd, prod);
+            }
+        }
+
+        return maxProd;
+        
+    }
+};
