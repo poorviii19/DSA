@@ -35,3 +35,8 @@ int main() {
     for (int i = 0; i < n; i++) cout << arr[i] << " ";
     return 0;
 }
+
+// Time Complexity: O(n+k)
+// Space Complexity: O(n+k)
+
+// Counting Sort sidesteps O(n log n) entirely by not comparing elements at all. Instead, it counts how many times each value occurs, then uses that count to directly place elements in their correct position. This only works when you know elements are integers within a known, reasonably small range [0, k].
