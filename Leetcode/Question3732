@@ -1,0 +1,24 @@
+class Solution {
+public:
+    long long maxProduct(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        int n = nums.size();
+
+        long long ans = 0;
+
+        vector<int> v = {
+            nums[0], nums[1],
+            nums[n - 2], nums[n - 1]
+        };
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = i + 1; j < 4; j++) {
+                long long product = 1LL * v[i] * v[j];
+                ans = max(ans, abs(product) * 100000LL);
+            }
+        }
+
+        return ans;
+    }
+};
