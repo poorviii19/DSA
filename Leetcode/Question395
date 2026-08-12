@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int solve(string &s, int left, int right, int k) {
+        if (right - left + 1 < k)
+            return 0;
+        vector<int> freq(26, 0);
+
+        for (int i = left; i <= right; i++) {
+            freq[s[i] - 'a']++;
+        }
+        for (int i = left; i <= right; i++) {
+
+            if (freq[s[i] - 'a'] < k) {
+
+                char bad = s[i];
+                int j = i + 1;
+
+                while (j <= right && s[j] == bad) {
+                    j++;
+                }
+                int leftAns = solve(s, left, i - 1, k);
+                int rightAns = solve(s, j, right, k);
+
+                return max(leftAns, rightAns);
+            }
+        }
+        return right - left + 1;
+    }
+
+    int longestSubstring(string s, int k) {
+        return solve(s, 0, s.length() - 1, k);
+    }
+};
