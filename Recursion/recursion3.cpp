@@ -14,6 +14,15 @@ int fibonaci(int n){    //nth fibonaci number   T.C.  nearly ==>  O(2^n)
 
 }
 
+int power(int n, int m){
+    if(n == 0 ){
+        return 1;
+    }
+
+    return m*power(n-1,m);
+}
+
+
 int main(){
 
     int n;
@@ -22,6 +31,12 @@ int main(){
 
     int ans = fibonaci(n);
     cout<<ans;
+
+
+    int m;
+    cin>>m;
+    int result = power(n,m);
+    cout<<result;
 
 
     return 0;
