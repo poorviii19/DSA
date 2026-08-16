@@ -1,0 +1,22 @@
+class Solution {
+public:
+    long long maxScore(vector<int>& nums, int x) {
+        const long long NEG = -(1LL << 60);
+
+        long long dp[2] = {NEG, NEG};
+
+        dp[nums[0] % 2] = nums[0];
+
+        for (int i = 1; i < nums.size(); i++) {
+            int p = nums[i] % 2;
+
+            long long sameParity = dp[p] + nums[i];
+
+            long long differentParity = dp[1 - p] + nums[i] - x;
+
+            dp[p] = max(sameParity, differentParity);
+        }
+
+        return max(dp[0], dp[1]);
+    }
+};
